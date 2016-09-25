@@ -32,10 +32,10 @@ GitHub 支持从文本中间划过的删除线。在要删除的文本的开头�
 只需要在代码块的开始和结尾处添加三个反引号即可达到与标准 Markdown 中代码块一样的语法。要想语法
 高亮，需要在开头的三个反引号后面加上语言类型。例如：
 
-``` C
+``` c
 #include <stdio.h>
 
-int main(int argc, char const \*argv[]) {
+int main(int argc, char const *argv[]) {
   printf("Hello World\n");
   return 0;
 }
