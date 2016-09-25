@@ -8,9 +8,6 @@ tags:  Markdown
 * content
 {:toc}
 
-概述
-===
-
 该文档参照 ”Markdown 语法说明(简体中文版)“ 的内容，使用 Markdown 写成。简要介绍了 Markdown
 语法。作练习 Markdown 语法用。详细的 Markdown 语法请参照
 [这里](http://www.appinn.com/markdown/ "Markdown 语法简体中文版")，英文原版请参照
@@ -21,7 +18,6 @@ tags:  Markdown
 
 宗旨
 ---
-
 Markdown 的目标是实现**易读易写**。
 
 可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，
@@ -38,11 +34,11 @@ Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法
 Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种
 书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。
 
-不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 
+不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是
 HTML 或是 Markdown；只要直接加标签就可以了。
 
 要制约的只有一些 HTML 区块元素――比如 <div\>、<table\>、<pre\>、<p\> 等标签，必须在前后
-加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 
+加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown
 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 <p\> 标签。
 
 例子如下，在 Markdown 文件里加上一段 HTML 表格：
@@ -57,20 +53,20 @@ HTML 或是 Markdown；只要直接加标签就可以了。
 
 	这是另一个普通段落。
 
-请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 
+请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用
 Markdown 样式的`*强调*`会没有效果。
 
 HTML 的区段（行内）标签如 `<span>`、`<cite>`、`<del>` 可以在 Markdown 的段落、列表或是
 标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。
-举例说明：如果比较喜欢 HTML 的 `<a>` 或 `<img>` 标签，可以直接使用这些标签，而不用 
+举例说明：如果比较喜欢 HTML 的 `<a>` 或 `<img>` 标签，可以直接使用这些标签，而不用
 Markdown 提供的链接或是图像标签语法。
 
 和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。
 
 特殊字符自动转换
 ---
-在 HTML 文件中，有两个字符需要特殊处理： < 和 & 。 < 符号用于起始标签，& 符号则用于标记 
-HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 `&lt;` 和 
+在 HTML 文件中，有两个字符需要特殊处理： < 和 & 。 < 符号用于起始标签，& 符号则用于标记
+HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 `&lt;` 和
 `&amp;`。
 
 & 字符尤其让网络文档编写者受折磨，如果你要打`「AT&T」` ，你必须要写成`「AT&amp;T」`。而网址
@@ -85,7 +81,7 @@ HTML 实体，如果你只是想要显示这些字符的原型，你必须要使
 才能放到链接标签的 href 属性里。不用说也知道这很容易忽略，这也可能是 HTML 标准检验所检查
 到的错误中，数量最多的。
 
-Markdown 让你可以自然地书写字符，需要转换的由它来处理好了。如果你使用的 & 字符是 HTML 
+Markdown 让你可以自然地书写字符，需要转换的由它来处理好了。如果你使用的 & 字符是 HTML
 字符实体的一部分，它会保留原状，否则它会被转换成 `&amp;`。
 
 所以你如果要在文档中插入一个版权符号 ©，你可以这样写：
@@ -93,14 +89,14 @@ Markdown 让你可以自然地书写字符，需要转换的由它来处理好�
 	&copy;
 
 Markdown 会保留它不动。而若你写：
-	
+
 	AT&T
 
 Markdown 就会将它转为：
 
 	AT&amp;T
 
-类似的状况也会发生在 < 符号上，因为 Markdown 允许 兼容 HTML ，如果你是把 < 符号作为 
+类似的状况也会发生在 < 符号上，因为 Markdown 允许 兼容 HTML ，如果你是把 < 符号作为
 HTML 标签的定界符使用，那 Markdown 也不会对它做任何转换，但是如果你写：
 
 	4 < 5
@@ -110,7 +106,7 @@ Markdown 将会把它转换为：
 	4 &lt; 5
 
 不过需要注意的是，code 范围内，不论是行内还是区块， < 和 & 两个符号都一定会被转换成 HTML
-实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 
+实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML
 语法中，你要把所有的 < 和 & 都转换为 HTML 实体，才能在 HTML 文件里面写出 HTML code。）
 
 区块元素
@@ -123,7 +119,7 @@ Markdown 将会把它转换为：
 则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。
 
 **由一个或多个连续的文本行组成**这句话其实暗示了 Markdown 允许段落内的强迫换行
-（插入换行符），这个特性和其他大部分的 text-to-HTML 格式不一样（包括 Movable Type 
+（插入换行符），这个特性和其他大部分的 text-to-HTML 格式不一样（包括 Movable Type
 的「Convert Line Breaks」选项），其它的格式会把每个换行符都转成 `<br/>` 标签。
 
 如果你确实想要依赖 Markdown 来插入`<br/>`标签的话，在插入处先按入两个以上的空格然后回车。
@@ -148,7 +144,7 @@ Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。
 
 区块引用 Blockquotes
 ---
-Markdown 标记区块引用是使用类似 email 中用 `>` 的引用方式。如果你还熟悉在 email 
+Markdown 标记区块引用是使用类似 email 中用 `>` 的引用方式。如果你还熟悉在 email
 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自
 己先断好行，然后在每行的最前面加上 `>`。
 
@@ -179,12 +175,12 @@ Markdown 也允许你偷懒只在整个段落的第一行最前面加上 > ：
 引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
 
 	> ## 这是一个标题。
-	> 
+	>
 	> 1.   这是第一行列表项。
 	> 2.   这是第二行列表项。
-	> 
+	>
 	> 给出一些例子代码：
-	> 
+	>
 	>     return shell_exec("echo $input | $markdown_script");
 
 任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后
@@ -196,7 +192,7 @@ Markdown 支持有序列表和无序列表。
 
 无序列表使用星号、加号或是减号作为列表标记：
 
-	+ item 1 
+	+ item 1
 	+ item 2
 	+ item 3
 
@@ -206,7 +202,7 @@ Markdown 支持有序列表和无序列表。
 	2. McHale
 	3. Parish
 
-很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 
+很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的
 HTML 标记为：
 
 	<ol>
@@ -281,10 +277,10 @@ HTML 标记为：
 列表项目可以包含多个段落，**每个项目下的段落都必须缩进 4 个空格或是 1 个制表符**：
 
 1.  This is This is a list item with two paragraphs. Lorem ipsum dolo sitamet,
-    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. bula 
+    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. bula
     bula cou zi shu bula bula cou zi shu bula bula cou zi shu
 
-    This is the second paragraph in the list item. You're only required to 
+    This is the second paragraph in the list item. You're only required to
     indent the first line.
 
 2.  This is the list item 2. It has only one paragraph.
@@ -292,17 +288,17 @@ HTML 标记为：
 如果你每行都有缩进，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：
 
 	*   This is a list item with two paragraphs.
-	
+
     	This is the second paragraph in the list item. You're
 	only required to indent the first line. Lorem ipsum dolor
 	sit amet, consectetuer adipiscing elit.
-	
+
 	*   Another item in the same list.
 
 如果要在列表项目内放进引用，那 > 就需要缩进：
 
 	*   A list item with a blockquote:
-	
+
     	> This is a blockquote
     	> inside a list item.
 
@@ -339,8 +335,8 @@ HTML 标记为：
 
 一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。
 
-在代码区块里面， & 、 < 和 > 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 
-插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown 
+在代码区块里面， & 、 < 和 > 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown
+插入范例用的 HTML 原始码，只需要复制贴上，再加上缩进就可以了，剩下的 Markdown
 都会帮你处理，例如：
 
 	   <div class="footer">
@@ -425,7 +421,7 @@ Markdown 支持两种形式的链接语法： 行内式和参考式两种形式�
 	[link text][A]
 
 **隐式链接标记**功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，
-要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 "Google" 链接到 
+要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 "Google" 链接到
 google.com，你可以简化成：
 
 	[Google][]
@@ -485,7 +481,7 @@ google.com，你可以简化成：
 
 强调
 ---
-Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 
+Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用
 `<em>` 标签包围，用两个 * 或 _ 包起来的话，则会被转成 `<strong>`，例如：
 
 	*single asterisks*
@@ -590,7 +586,7 @@ Markdown 使用一种和链接很相似的语法来标记图片，同样也允�
 
 	[id]: url/to/image  "Optional title attribute"
 
-到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 
+到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的
 `<img>` 标签。
 
 其他
@@ -598,7 +594,7 @@ Markdown 使用一种和链接很相似的语法来标记图片，同样也允�
 
 自动链接
 ---
-Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是**用方括号包起来**， 
+Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是**用方括号包起来**，
 Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：
 
 	<http://example.com/>
@@ -619,7 +615,7 @@ Markdown 会转成：
 	&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
 	&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 
-在浏览器里面，这段字串（其实是 
+在浏览器里面，这段字串（其实是
 <a href="mailto:address@example.com">address@example.com</a>）会变成一个可以点击的「address@example.com」链接。
 
 （这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，
