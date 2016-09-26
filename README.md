@@ -2,7 +2,7 @@
 =========
 该仓库是我的 GitHub Pages 源码仓库。效果请参看我的 [GitHub Pages](https://quanzhuo.github.io/)。
 在 [Gaohaoyang](https://github.com/Gaohaoyang)
-的 [GitHub Pages](https://github.com/Gaohaoyang/gaohaoyang.github.io)的基础上稍加
+的 [GitHub Pages](https://github.com/Gaohaoyang/gaohaoyang.github.io) 的基础上稍加
 修改，去掉了不需要的内容。感谢他作出的这个简明实用的博客站点。
 
 博客主要页面
@@ -16,27 +16,29 @@
 
 怎么使用
 =======
+
 1. 安装 ruby 和 jekyll 环境
 --------------------------
-    这一步和第5步主要是为了让博客系统在本地跑起来，如果不想在本地运行，可以无视这两步，
-    但我还是强烈建议试着先在本地跑起来，没有什么问题后再推送的 GitHub 上。
     
-    Windows 用户可以直接使用 RubyInstaller 安装 ruby 环境。后续的操作中可能还会提示安装 
-    DevKit，根据提示操作即可。安装 jekyll 命令如下：
+这一步和第5步主要是为了让博客系统在本地跑起来，如果不想在本地运行，可以无视这两步，但我还是
+强烈建议试着先在本地跑起来，没有什么问题后再推送的 GitHub 上。
+    
+Windows 用户可以直接使用 RubyInstaller 安装 ruby 环境。后续的操作中可能还会提示安装 
+DevKit，根据提示操作即可。安装 jekyll 命令如下：
 
-        gem install jekyll
+    gem install jekyll
 
-    详情可以查看 [jekyll 官网](https://jekyllrb.com/) 或 
-    [中文翻译版 jekyll 官网](http://jekyllcn.com/)。 
+详情可以查看 [jekyll 官网](https://jekyllrb.com/) 或 
+[中文翻译版 jekyll 官网](http://jekyllcn.com/)。 
     
 2. 克隆该仓库
 ------------
 
-        git clone https://github.com/quanzhuo/quanzhuo.github.io.git
+    git clone https://github.com/quanzhuo/quanzhuo.github.io.git
         
 3. 修改参数
 ----------
-主要修改 _config.yml 中的参数和自己的网站小图 favicon.ico
+主要修改 _config.yml 中的参数和自己的网站小图 favicon.ico 。
 
 在 _config.yml 文件中：
 
@@ -108,5 +110,4 @@ excerpt_separator: "\n\n\n\n"
 
 6. 发布到 GitHub
 ----------------
-
 没什么问题，推送到自己的博客仓库即可。
