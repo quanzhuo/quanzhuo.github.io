@@ -1,3 +1,14 @@
+---
+layout: post
+title: "Android 构建系统"
+categories: Android
+tags: 
+---
+
+* content
+{:toc}
+
+
 安卓构建系统
 ===========
 首先导入文件 `build/envsetup.sh`，导入该文件之后，当前环境中就会有一些额外有用的
