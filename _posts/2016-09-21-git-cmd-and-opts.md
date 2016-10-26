@@ -113,6 +113,9 @@ global选项，否则在你提交代码的时候，你的工作成果就成了�
 ----------
 + `git rev-parse --git-dir`
 + `git push -f`：即使不能快进合并，也强制更新远程仓库的引用，修改提交信息时很有用。
++ `git archive --format=tgz --prefix=linux-2.6.34/ --verbose -o linux-2.6.34.tgz HEAD`
+
+	将 HEAD 指向的代码树打包为文件 linux-2.6.34.tgz
 
 gerrit 代码提交 sop
 ------------------
