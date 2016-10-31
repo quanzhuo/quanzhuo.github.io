@@ -27,12 +27,13 @@ git 的配置分为三个等级：system，global 和 local，分别代表系统
 `--system`， `--global` 和 `--local` 选项进行设定。
 
 + `git config --global user.name <your-name>`
-+ `git config --global user.email <your-email>`     
++ `git config --global user.email <your-email>`
 + `git config --global alias.st status`
 + `git config --global alias.graph "log --graph --oneline --all --decorate"`
 + `git config --global core.editor vim`
 + `git config --global core.fileMode false`
 + `git config --list`
++ `git config --unset --global user.name`
 
 前两项配置 git 的用户名和邮箱地址，当大家用同一账号工作于同一主机的时候，不要指定
 global选项，否则在你提交代码的时候，你的工作成果就成了别人的，或者别人的工作成果成了你的。
@@ -111,7 +112,8 @@ global选项，否则在你提交代码的时候，你的工作成果就成了�
 
 其它有用命令
 ----------
-+ `git rev-parse --git-dir`
++ `git rev-parse --git-dir`：显示 git 仓库路径
++ `git rev-parse --show-toplevel`：显示 git 工作区路径
 + `git push -f`：即使不能快进合并，也强制更新远程仓库的引用，修改提交信息时很有用。
 
 gerrit 代码提交 sop
