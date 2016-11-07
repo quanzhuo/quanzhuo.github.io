@@ -106,8 +106,9 @@ global选项，否则在你提交代码的时候，你的工作成果就成了�
 打标签
 -----
 + `git tag`
-+ `git tag -l <pattern>`：列出
-+ `git tag -a -m <message> <tag-name> [commit]`：打 tag
++ `git tag -l <pattern>`：列出 tag
++ `git tag <tag-name> [commit]`：针对 commit （默认HEAD）打一个 tag （轻量级）
++ `git tag -a -m <message> <tag-name> [commit]`：会创建一个 tag 对象，需要提交信息
 + `git tag -d <tagname>...`： 删除
 
 其它有用命令
