@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "怎么做 patch"
+title: "怎么做 Patch"
 categories: VCS
-tags: patch
+tags: Patch
 ---
 
 * content
 {:toc}
 
-有多种方法可以生成 patch。分享一下使用 diff，patch 或者 使用 git 制作 patch 的方法。
-diff 以及 git diff 命令的输出比较怪异，但是它们又是差异比较的关键所在。patch 文件的内容
+有多种方法可以生成 Patch。分享一下使用 diff，Patch 或者 使用 git 制作 Patch 的方法。
+diff 以及 git diff 命令的输出比较怪异，但是它们又是差异比较的关键所在。Patch 文件的内容
 一般都是统一 diff 格式。所以正确理解 diff 的格式输出十分重要。
 
 
@@ -83,55 +83,55 @@ test2 中独有的内容。前两行的后面是时间。
 3. 第四行开始，一直到下一个 `@@` 之间的内容是差异小节的内容。在差异小节中以 `-` 开始的行是 
 test1 中独有的，以 `+` 开始的行是 test2 独有的，以空格开始的行是两个文件中都存在的。
 
-生成patch
+生成Patch
 ---------
 
     diff -u test1 test2 > test.diff
  
-应用 patch 还原文件
+应用 Patch 还原文件
 -----------------
     
 	patch test1 < test.diff
     
-在 git 中使用 patch
+在 git 中使用 Patch
 ======================
-git 中提供了方便的生成 patch 的命令，该命令生成的 patch 包含所有的提交信息，可以直接通过
-git am 命令应用 patch，自动创建提交，十分方便。
+git 中提供了方便的生成 Patch 的命令，该命令生成的 Patch 包含所有的提交信息，可以直接通过
+git am 命令应用 Patch，自动创建提交，十分方便。
 
-使用 git format-patch 生成 patch
+使用 git format-patch 生成 Patch
 ---------------------------------
-format-patch 是 git 中专门生成 patch 的命令。使用 format-patch 命令会为每次提交创建一个
-patch。每个 patch 都是一个单独的文件。patch 中含有本次提交中包含的作者、提交者、comment
-等所有的信息。协作者使用你提供的 由format-patch 生成的 patch 文件，可以直接使用 `git am`
-命令应用 patch 并自动提交。`git format-patch` 命令在你的本地仓库中执行，**不需要同步到
+format-patch 是 git 中专门生成 Patch 的命令。使用 format-patch 命令会为每次提交创建一个
+Patch。每个 Patch 都是一个单独的文件。Patch 中含有本次提交中包含的作者、提交者、comment
+等所有的信息。协作者使用你提供的 由format-patch 生成的 Patch 文件，可以直接使用 `git am`
+命令应用 Patch 并自动提交。`git format-patch` 命令在你的本地仓库中执行，**不需要同步到
 gerrit 上。**
 
-例如，我在 base 仓库中为当前分支的最新 3 次提交创建三个 patch
+例如，我在 base 仓库中为当前分支的最新 3 次提交创建三个 Patch
 
     $ git format-patch -3 HEAD
-    0001-C5F-3171-C5-Google-security-patch-for-bsp.patch
-    0002-C5F-3171-C5-Google-security-patch-for-bsp.patch
-    0003-C5F-3171-C5-Google-security-patch-for-bsp.patch
+    0001-C5F-3171-C5-Google-security-Patch-for-bsp.Patch
+    0002-C5F-3171-C5-Google-security-Patch-for-bsp.Patch
+    0003-C5F-3171-C5-Google-security-Patch-for-bsp.Patch
 
-假如当前分支上的最新的三次提交是你的协作者没有的。你就可以通过上面的命令生成三个 patch 发给
+假如当前分支上的最新的三次提交是你的协作者没有的。你就可以通过上面的命令生成三个 Patch 发给
 他。对方使用 git am 命令就可以应用。
 
-如果你想生成 patch 的那次提交位于代码树的中间，只需在命令行中指定 `commit ID` 即可：
+如果你想生成 Patch 的那次提交位于代码树的中间，只需在命令行中指定 `commit ID` 即可：
 
     git format-patch -n commit
     
-其中的 n 表明为相对于本次提交的前 n 次生成patch。
+其中的 n 表明为相对于本次提交的前 n 次生成Patch。
 
-使用 git am 应用 patch
+使用 git am 应用 Patch
 -----------------------
-得到别人的 patch 之后，可以直接使用 git am 应用 patch：
+得到别人的 Patch 之后，可以直接使用 git am 应用 Patch：
 
-    git am  0001-C5F-3171-C5-Google-security-patch-for-bsp.patch
+    git am  0001-C5F-3171-C5-Google-security-Patch-for-bsp.Patch
     
 这样，就自动的生成了一次提交。
 
-应用 patch 也可以通过 git apply，但是 git apply 并不会自动为你创建提交。它只是为你修改了
-文件。仍然需要你自己添加修改，创建提交。推荐使用 git am 来应用patch。
+应用 Patch 也可以通过 git apply，但是 git apply 并不会自动为你创建提交。它只是为你修改了
+文件。仍然需要你自己添加修改，创建提交。推荐使用 git am 来应用Patch。
 
 如何修订提交信息
 --------------
