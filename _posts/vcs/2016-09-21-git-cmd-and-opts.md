@@ -119,30 +119,30 @@ global选项，否则在你提交代码的时候，你的工作成果就成了�
 + `git archive --format=tgz --prefix=linux-2.6.34/ --verbose -o linux-2.6.34.tgz HEAD`
 
 	将 HEAD 指向的代码树打包为文件 linux-2.6.34.tgz
+	
+更改历史
+----
+有时候，可能在我们完成某一个功能，修改某一个 bug 的时候由于某些原因，创建了多次提交。
+这样是不太合理的。解一个 bug 最好是创建一次提交。此时就需要更改历史。下面分两种情况
+说明。
 
-gerrit 代码提交 sop
-------------------
-1. `git clone ssh://YOU-ACCOUNT@10.195.229.38:29418/QC/platform/frameworks/av`
-2. `git checkout -b C5F/dev/MSM89xx/04710/PFAM --track origin/C5F/dev/MSM89xx/04710/PFAM`
+1.  合并多次提交为一次分以下两步进行
 
-    这一步是在本地新建一个工作分支跟踪远程分支并检出。其实，前两步可以合并为：
-    `git clone ssh://YOU-ACCOUNT@10.195.229.38:29418/QC/platform/frameworks/av`
-    ` -b C5F/dev/MSM89xx/04710/PFAM`。分两步走可以让我们更加清楚自己在干什么。
+        1. git reset --soft <rev>
+	    2. git commit
 
-3. 修改代码
-4. `git add; git commit`：添加修改并提交
-5. `git push origin HEAD:refs/for/C5F/dev/MSM89xx/04710/PFAM`：推送到远程并等待审核
+    第一步使用 `git reset --soft` 将 HEAD 重置为指向想要合并的几次提交前面的那一次提交。
+    因为使用了 `--soft` 选项，提交历史已经丢失，要合并的那几次提交的 index 将合并到一块
+    儿。此时提交，即可合并他们。
 
-为什么要加 `refs/for/`？
+2. 从历史提交中删除某一次提交
 
-根据 git 的语法，就上面的例子而言，将本地分支的最新修改推送到远程仓库，需要这样做：
-`git push origin HEAD:C5F/dev/MSM89xx/04710/PFAM`，但是对于 gerrit 来说，必须加上
-`refs/for/`，这是 gerrit 的特殊语法，加上 `refs/for/` 之后，实际推送过去的分支并没有
-合并，而是处于等待 review 的状态。
-
-可以在 [这里](http://10.195.229.38/Documentation/user-upload.html) 找到关于 gerrit
-提交代码的详细资料。
-
+        1. git check <rev>
+        2. git cherry-pick <rev>
+        3. git checkout master
+        4. git reset --hard HEAD@{1}
+	
+	
 
 忽略文件
 -------
@@ -166,3 +166,26 @@ gerrit 代码提交 sop
 + 匹配模式可以以（/）开头防止递归。
 + 匹配模式可以以（/）结尾指定目录。
 + 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+
+gerrit 代码提交 sop
+------------------
+1. `git clone ssh://YOU-ACCOUNT@10.195.229.38:29418/QC/platform/frameworks/av`
+2. `git checkout -b C5F/dev/MSM89xx/04710/PFAM --track origin/C5F/dev/MSM89xx/04710/PFAM`
+
+    这一步是在本地新建一个工作分支跟踪远程分支并检出。其实，前两步可以合并为：
+    `git clone ssh://YOU-ACCOUNT@10.195.229.38:29418/QC/platform/frameworks/av`
+    ` -b C5F/dev/MSM89xx/04710/PFAM`。分两步走可以让我们更加清楚自己在干什么。
+
+3. 修改代码
+4. `git add; git commit`：添加修改并提交
+5. `git push origin HEAD:refs/for/C5F/dev/MSM89xx/04710/PFAM`：推送到远程并等待审核
+
+为什么要加 `refs/for/`？
+
+根据 git 的语法，就上面的例子而言，将本地分支的最新修改推送到远程仓库，需要这样做：
+`git push origin HEAD:C5F/dev/MSM89xx/04710/PFAM`，但是对于 gerrit 来说，必须加上
+`refs/for/`，这是 gerrit 的特殊语法，加上 `refs/for/` 之后，实际推送过去的分支并没有
+合并，而是处于等待 review 的状态。
+
+可以在 [这里](http://10.195.229.38/Documentation/user-upload.html) 找到关于 gerrit
+提交代码的详细资料。
