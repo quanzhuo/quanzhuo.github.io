@@ -97,6 +97,12 @@ Gnome 桌面更加正统，我想这也是各大 Linux 发行版本的桌面版�
     这个也是一个 Evernote 客户端，不过是针对 Ubuntu 的 Unity 桌面的。跟 Unity 的 Dash
     集成到一块儿。使用 Unity 桌面的用户可以试一试。
 
++ gnome-pie
+
+    Gnome 环境下的一个可视化的程序启动器。定制性很强。对于某些使用脚本作为启动文件的程序，使用
+    gnome-pie 为之添加一个启动入口是十分有用的。而且支持自定义应用程序图标。使用快捷键调出，
+    十分炫酷。
+
 Gnome Shell 扩展
 ---
 下面介绍一些 Gnome Shell 的扩展，这只是一些方便我使用的一些扩展。Gnome Shell 有多达数百个
