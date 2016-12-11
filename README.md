@@ -134,7 +134,17 @@ excerpt_separator: "\n\n\n\n"
     
     jekyll s
     
-在本地访问 localhost:4000 即可看到博客主页。
+在本地访问 localhost:4000 即可看到博客主页。如果运行上面命令提示无法绑定 4000 端口之类的错
+误，那么多半是你本机上的 4000 端口已经被占用，可通过下面命令找出占用 4000 端口的程序，退出该
+程序之后重新运行 jekyll。
+
+对于 Windows，在 cmd 中执行下面命令（需要安装 Gow 以提供 grep 命令）：
+
+    netstat -abn | grep -A 1 4000 
+
+对于 Linux，执行：
+
+    netstat -tln | grep -A 1 4000
 
 7. 发布到 GitHub
 ----------------
