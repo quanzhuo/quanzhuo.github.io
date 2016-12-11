@@ -12,7 +12,7 @@ tags:
 起来还不错。 Gnome 桌面的默认安装给人一种粗枝大叶的感觉，看起来不够细腻，但是 Gnome Shell 
 提供了很多强大的插件，稍加定制即可满足需求。 我个人更加喜欢 Gnome 桌面，很大一部分原因是觉得 
 Gnome 桌面更加正统，我想这也是各大 Linux 发行版本的桌面版本基本上都选择 Gnome 作为默认桌面
-的一个原因吧。下面将介绍一些 Linux 上的一些提供生产力的软件以及 Gnome Shell 插件。
+的一个原因吧。下面将介绍一些 Linux 上的一些提高生产力的软件以及 Gnome Shell 插件。
 
 
 
@@ -102,6 +102,21 @@ Gnome 桌面更加正统，我想这也是各大 Linux 发行版本的桌面版�
     Gnome 环境下的一个可视化的程序启动器。定制性很强。对于某些使用脚本作为启动文件的程序，使用
     gnome-pie 为之添加一个启动入口是十分有用的。而且支持自定义应用程序图标。使用快捷键调出，
     十分炫酷。
+
++ GNOME App Folders Manager
+
+    Gnome Shell 的 dashboard 默认情况下只有两个应用程序文件夹： Utilities 和 Sundry，
+    当应用安装过多时，会导致 dashboard 看起来很杂乱。该程序可以让你在 dashboard 中创建自定
+    义的文件夹，为应用程序分组，将多个应用图标放在一个文件夹下面，非常实用。该项目托管在
+    Github 上，可以在
+    [这里](https://github.com/muflone/gnome-appfolders-manager/releases) 下载预
+    编译的二进制发布包。
+
++ alternative-toolbar
+
+    准确的说，这应该是一个 Gnome 音乐播放器 Rhythmbox 的插件，使 Rhythmbox 成为一个更加
+    好用的音乐播放器：单曲循环，快捷键，暗黑主题，拖拽支持... 等等。
+    [该项目](https://github.com/fossfreedom/alternative-toolbar) 托管于 Github。
 
 Gnome Shell 扩展
 ---
