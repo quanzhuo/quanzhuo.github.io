@@ -16,7 +16,7 @@ tags:
 
 这是 doskey 的语法：
 
-```bat
+```
 C:\Users\Administrator>doskey /?
 编辑命令行，重新调用 Windows 命令，并创建宏。
 
@@ -40,7 +40,7 @@ Linux 上面常用的命令，是 cygwin 的一个轻量级的替代品），想
 例如，假设在 `c:\Users\Administrator\bat` 文件夹（该路径须要加入 PATH 环境变量）下
 面有一个批处理文件 `alias.bat`，在里面加入了一些 alias：
 
-```bat
+```
 @echo off
 doskey ls=ls --color=always $*
 doskey ll=ls -lh --color=always $*
