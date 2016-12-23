@@ -62,7 +62,7 @@ Writing application                      : Lavf56.18.101
 ```bash
 for fname in `ls`
 do
-    title=`mediainfo $fname | grep "Track name" | cut -d":" -f2 | awk '{$1=$1};1'`
+    title=`mediainfo $fname | grep "Track name" | cut -d":" -f2 | awk '{print $1}'`
     echo "rename $fname to $title"
     mv $fname $title
 done
