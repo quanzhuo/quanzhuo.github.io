@@ -79,8 +79,20 @@ pattern 和 {action} 两个中可以忽略一个。如果没有提供 {action}�
 	\ddd      1, 2 or 3 octal digits for ascii ddd
 	\xhh      1 or 2 hex digits for ascii  hh
 
+实际上有三种数据类型；第三种是数字和字符串类型，它同时具有一个数字值和一个字符串值。
 
+表达式的类型是由它所处的上下文决定的，如果需要，就会发生自动类型转换。举个例子：
 
+	y = x + 2; z= x "hello"
+
+y 将会是数字类型。如果 x 不是数字，那么 x 中读取到的值将会被转化为数字，然后加上 2 ，
+赋给 y。z 将会是字符串类型，x 如果不是字符串类型，将会被转化为字符串类型然后和 "hello"
+字符串连接起来赋给 z。**请注意**：x 的类型以及值并没有发生变化。 字符串表达式转化为数
+字按照 c 库函数 `atof` 的规则进行。
+
+在一个需要布尔值的上下文上，例如 `if ( expr ) statement`，如果 expr 是一个字符串表达
+式，只有在 expr 为空串的时候，才为 false，否则为 true；如果 expr 是数字值，只有当 
+expr 为 0 时，转换为 false，否则转换为 true。
 
 
 ## 正则表达式
@@ -104,6 +116,28 @@ AWK 使用和 egrep 一致的扩展正则表达式语法
 
 记录每次读入一个，存储在变量 $0 中。记录会被划分为域，并且分别赋值给变量 $1，$2，...
 $NF。内建变量 NF 等于划分的域的数目，NR 和 FNR 加 1。大于 $NF 的域被设置为 ""。
+
+给 $0 赋值，会导致域和 NF 被重新计算。给 NF 或者一个域赋值或导致 S0 被重新构建。如果
+给大于 NF 的域赋值，会增加 NF，并且导致 S0 被重新构建。
+
+域中存储的数据类型为字符串，除非整个域都是数字格式，此时该域的数据类型为 “数字和字符串”
+例如：
+
+	echo 24 24E |
+	awk '{ print($1>100, $1>"100", $2>100, $2>"100") }'
+	0 1 1 1
+
+在上面的例子中，$0 和 $2 是字符串，$1 是数字和字符串类型。print 语句中，第一个比较是
+数值比较，第二个是字符串比较，第三个是字符串比较（100 会被转化为 "100"），最后一个也是
+字符串比较。
+
+域的索引并不是常量。任何 awk 语言中的合法表达式都可以放在 $ 后面来引用一个域。表达式的
+值指定了域的索引。如果表达式的值是字符串，则会被转化为数字。例如：
+
+	awk '{for(i=1;i<=NF;i++) 
+			print $i }'
+
+上面的代码将文件中每一行的每一个域打印在一行上。
 
 ## 表达式和操作符
 
@@ -136,14 +170,21 @@ $NF。内建变量 NF 等于划分的域的数目，NR 和 FNR 加 1。大于 $N
 + FILENAME： 当前正在处理的输入文件的名字
 + FNR：当前输入文件的当前记录编号（行），该变量跟 NR 变量的区别是，每当读取一个新的文件
   时，该变量都将被重置。而无论读取多少个输入文件，NR 变量都不会被重置。
-+ FS        splits records into fields as a regular expression.
-+ NF        number of fields in the current record.
-+ NR        current record number in the total input stream.
++ FS：域分隔符，默认为：空格，水平制表符，换行符。可被重新制定为一个正则表达式。
++ NF：一条记录中域的个数，对域的引用如果大于该数字，得到空字符串（""）。
++ NR：当前的记录索引，从 1 开始。
 + OFMT      format for printing numbers; initially = "%.6g".
 + OFS       inserted between fields on output, initially = " ".
 + ORS       terminates each record on output, initially = "\n".
 + RLENGTH   length set by the last call to the built-in function, match().
-+ RS        input record separator, initially = "\n".
++ RS：记录分隔符，默认为 "\n"，如果你想要改变该变量，一般在与 BEGIN 配对的 {action}
+    中更改，例如：
+
+		awk 'BEGIN { RS = "u"} 
+		 	 { print $0 }' mail-list
+
+	记录分隔符也可以是一个正则表达式。
+
 + RSTART    index set by the last call to match().
 + SUBSEP    used to build multiple array subscripts, initially = "\034".
 
