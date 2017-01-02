@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "好用的 Linux 软件以及 Gnome Shell 扩展"
-categories: Linux
+categories: sys-admin
 tags:  
 ---
 

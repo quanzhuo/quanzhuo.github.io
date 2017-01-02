@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "在 Linux 上使用 Group 和 ACL 进行团队工作"
-categories: Linux
+categories: sys-admin
 tags:  
 ---
 
@@ -19,7 +19,7 @@ tags:
 多个账号之间的协作通过用户组实现，先创建一个所有人共享的用户组：
 
     sudo addgroup <group-name>
-    
+
 ## 添加用户
 
 然后创建多个需要的用户：
@@ -46,14 +46,14 @@ tags:
 经过上面的命令 /home/share 变成了 root 用户的，把它改为你自己的
 
     sudo chown <your-user-name>:<your-group> /home/share
-    
+
 ## 设置 ACL权限
 
 下面改变 `/home/share` 目录下的默认创建权限
 
     chmod g+s /home/share
     setfacl -d -m g::rwx /home/share
-    setfacl -d -m o::rw /home/share    
+    setfacl -d -m o::rw /home/share
 
 通过上面的设置，同一用户组的用户在 /home/share 目录下创建的文件的默认权限为 664，创建
 的文件夹的默认权限为 775。大家就可以进行协作了。由于大家是使用不同的账号登录的，有各自
