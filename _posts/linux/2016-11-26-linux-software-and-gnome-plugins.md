@@ -53,6 +53,18 @@ tags:
     是一个用于搜索计算机上任何东西的工具，十分好用。按下 Ctrl + space 键弹出搜索对话框。各大
     发行版本的软件仓库中都提供有，直接安装即可。
 
++ lantern
+
+    是一个用于翻墙的工具。刚开始的 lantern 没有会员与非会员之分，速度飞快，简直是神器。目前
+    的 lantern 非会员用户每月有 800MB 的流量，速度没有以前那么快了。该项目托管于 github，
+    可以在它的 [项目主页](https://github.com/getlantern/lantern) 找到下载地址。
+
++ chrome
+
+    Linux 版本的 chrome 浏览器。在 [这里](https://www.google.com/chrome/) 下载。我一
+    般是安装好 lantern，网络畅通之后安装 chrome。要注意 chrome 不同于 chromium，
+    chromium 是一个社区维护的开源浏览器，而 chrome 是在 chromium 的基础上开发的。
+
 + 搜狗输入法
 + 网易云音乐
 + 福昕阅读器
