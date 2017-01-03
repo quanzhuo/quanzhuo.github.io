@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Windows 系统上的 alias"
-categories: Sys-admin
+categories: sys-admin
 tags:  
 ---
 

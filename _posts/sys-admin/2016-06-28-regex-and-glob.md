@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "通配符和正则表达式"
-categories: Linux
+categories: sys-admin
 tags: regex
 ---
 
