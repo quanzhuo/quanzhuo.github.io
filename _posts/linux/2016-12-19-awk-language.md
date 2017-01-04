@@ -10,7 +10,7 @@ tags: awk
 
 awk 是处理文本的利器，使用 awk 可以完成很多复杂的文本处理工作。awk 工具提供了编程语言
 中具有的程序流程控制，字符串处理，随机数生成，数学运算等功能。因此 awk 被称之为一门
-语言，可见 awk 工具的强大。'awk' 这个名字是取它最初的三位开发者名字的首字母而来。awk 
+语言，可见 awk 工具的强大。'awk' 这个名字是取它最初的三位开发者名字的首字母而来。awk
 可以在 Linux，OSx，Windows 上使用。
 
 
@@ -21,7 +21,7 @@ awk 程序由一系列的 `pattern {action}` 和函数定义组成。较短的 a
 输入，通常程序文本被括在单引号内，以免被 shell 特殊解释；如果程序较长，可以通过 -f 选
 项在文件中读取。要处理的文本名直接在命令行中读取，如果在命令行中没有提供文件名，则处理
 标准输入。输入被根据 RS 变量划分为记录（records）。RS 变量默认等于 "\n"，因此，记录和
-行是同义词。每一个记录都要和每一个 pattern 尝试进行匹配。如果匹配，pattern 后面的 
+行是同义词。每一个记录都要和每一个 pattern 尝试进行匹配。如果匹配，pattern 后面的
 {action} 就被执行。
 
 ## 编程结构
@@ -31,13 +31,13 @@ AWK 程序可以是一系列的 `pattern {action}` 对，和用户函数定义�
 
 pattern 可以是：
 
-	BEGIN
-	END
-	expression
-	expression , expression
+    BEGIN
+    END
+    expression
+    expression , expression
 
 pattern 和 {action} 两个中可以忽略一个。如果没有提供 {action}，默认为 { print }。如
-果忽略了 pattern，就是为是匹配的。 BEGIN 和 END 这两个 pattern 必须提供一个 action。
+果忽略了 pattern，就认为是匹配的。 BEGIN 和 END 这两个 pattern 必须提供一个 action。
 
 语句由换行符，分号，或者换行符和分号分隔。语句块，比如说 actions 或者循环体需要使用大
 括号括起来，就像在 C 语言中一样。语句块中的最后一条语句后面不需要跟分隔符。空白行没有
@@ -47,43 +47,44 @@ pattern 和 {action} 两个中可以忽略一个。如果没有提供 {action}�
 
 以下的语句控制语句块中的程序流。
 
-	if ( expr ) statement
-	if ( expr ) statement else statement
-	while ( expr ) statement
-	do statement while ( expr )
-	for ( opt_expr ; opt_expr ; opt_expr ) statement
-	for ( var in array ) statement
-	continue
-	break
-
+    if ( expr ) statement
+    if ( expr ) statement else statement
+    while ( expr ) statement
+    do statement while ( expr )
+    for ( opt_expr ; opt_expr ; opt_expr ) statement
+    for ( var in array ) statement
+    continue
+    break
 
 ## 数据类型，转换和比较
 
-有两种基本数据类型，数字和字符串。数值常量可以是整数，像 -2，小数，像 1.08，或者使用
+有两种基本数据类型：数字和字符串。数值常量可以是整数（像 -2），小数（像 1.08），或者使用
 科学计数法表示，比如 -1.1e4 或者 .28E-3。所有的数值表示和计算在内部都使用浮点数。举个
 例子，表达式 0.2e2 == 20 为 true，true 是由 1.0 表示的。
 
 字符串常量由双引号括起来。例如："This is a string with a newline at the end.\n"
 
-通过对换行符进行转义，字符串可以跨越多行。接受以下转义序列
+通过对换行符进行转义，字符串可以跨越多行。awk 接受以下转义序列：
 
-	\\        \
-	\"        "
-	\a        alert, ascii 7
-	\b        backspace, ascii 8
-	\t        tab, ascii 9
-	\n        newline, ascii 10
-	\v        vertical tab, ascii 11
-	\f        formfeed, ascii 12
-	\r        carriage return, ascii 13
-	\ddd      1, 2 or 3 octal digits for ascii ddd
-	\xhh      1 or 2 hex digits for ascii  hh
+    \\        \
+    \"        "
+    \a        警报，ASCII：7
+    \b        退格符，ASCII：8
+    \t        制表符，ASCII：9
+    \n        换行符，ASCII：10
+    \v        垂直制表符，ASCII：11
+    \f        进纸符号，ASCII：12
+    \r        回车，ASCII：13
+    \ddd      一到三个八进制数字，代表 ASCII 字符：ddd
+    \xhh      一个或者两个十六进制数字，代表 ASCII 字符：hh
 
-实际上有三种数据类型；第三种是数字和字符串类型，它同时具有一个数字值和一个字符串值。
+实际上有三种数据类型。第三种是数字和字符串类型，该类型的值同时具有一个数字值和一个字符串值。
+用户定义变量只有当第一次被引用的时候才会被创建，会被初始化为 "null"。如果是数字和字符串
+类型，那么它具有数字值 0 ，具有字符串值 ""，
 
-表达式的类型是由它所处的上下文决定的，如果需要，就会发生自动类型转换。举个例子：
+表达式的类型是由它所处的上下文决定的.如果需要，就会发生自动类型转换。举个例子：
 
-	y = x + 2; z= x "hello"
+    y = x + 2; z = x "hello"
 
 y 将会是数字类型。如果 x 不是数字，那么 x 中读取到的值将会被转化为数字，然后加上 2 ，
 赋给 y。z 将会是字符串类型，x 如果不是字符串类型，将会被转化为字符串类型然后和 "hello"
@@ -91,7 +92,7 @@ y 将会是数字类型。如果 x 不是数字，那么 x 中读取到的值将
 字按照 c 库函数 `atof` 的规则进行。
 
 在一个需要布尔值的上下文上，例如 `if ( expr ) statement`，如果 expr 是一个字符串表达
-式，只有在 expr 为空串的时候，才为 false，否则为 true；如果 expr 是数字值，只有当 
+式，只有在 expr 为空串的时候，才为 false，否则为 true；如果 expr 是数字值，只有当
 expr 为 0 时，转换为 false，否则转换为 true。
 
 
@@ -107,10 +108,52 @@ expr 为 0 时，转换为 false，否则转换为 true。
 
     /r/ { action }   and   $0 ~ /r/ { action }
 
-是一样的，对于每一个匹配 r 的输入记录，都将执行 action。实际上， /r/ 和 $0 ~ /r/ 是
-等价的。
+是等价的，对于每一个匹配 r 的输入记录，都将执行 action。实际上。 `/r/` 和 `$0 ~ /r/`
+是等价的，除非 `/r/` 位于匹配操作符的右边，或者需要给内建函数传递一个正则表达式参数。其
+实这样也很好理解，一个函数需要一个正则表达式参数，你总不能给它传递一个 `$0 ~ /r/` 吧。
 
-AWK 使用和 egrep 一致的扩展正则表达式语法
+AWK 使用和 egrep 一致的扩展正则表达式语法。在正则表达式中具有特殊意义的元字符有以下几个：
+
+    ^ $ . [ ] | ( ) * + ?
+
+Regular expressions are built up from characters as follows:
+
+* `c`：匹配非元字符 c
+* `\c`：如果 \c 是一个转义字符，就按照转义字符解释。否则，解释为字符 c
+* `.`：匹配任何字符（包括换行符）
+* `^`：匹配字符串的开头
+* `$`：匹配字符串的结尾
+* `[c1c2c3...]`：匹配方括号中的任意一个字符
+* `[^c1c2c3...]`：匹配不在方括号中的任意一个字符
+
+Regular expressions are built up from other regular expressions as follows:
+
+* `r1r2`：当 r2 跟在 r1 后面的时候才匹配
+* `r1 | r2`：r1 和 r2 只要存在一个就匹配
+* `r*`：r 重复任意次
+* `r+`：r 重复一次或多次
+* `r?`：r 重复0次或一次
+* `(r)`：匹配 r，提供分组的功能
+
+举个例子，下面的两个正则表达式分别匹配 AWK 的标识符和 数字常量。注意 `.` 如果用做小数点
+必须被转义，因为 `.` 是一个元字符。
+
+    /^[_a-zA-Z][_a-zA-Z0-9]*$/
+    /^[-+]?([0-9]+\.?|\.[0-9])[0-9]*([eE][-+]?[0-9]+)?$/
+
+操作符 `~` 和 `!~` 的右边可以使用任何正则表达式，正则表达式也可以转递给需要正则表达式
+作为参数的内建函数。如果需要，正则表达式会被转换为字符串，但是任然被解释为正则表达式。例如：
+
+    BEGIN { identifier = "[_a-zA-Z][_a-zA-Z0-9]*" }
+    $0 ~ "^" identifier
+
+以上语句会打印出任何以 AWK 标识符开头的行。
+
+mawk 会识别空正则表达式：`//`，它会匹配空字符串。因此，该正则表达式会在一个字符串的开头，
+任意字符中间，以及结尾匹配。例如：
+
+    echo  abc | mawk { gsub(//, "X") ; print }
+    XaXbXcX
 
 ## 记录和域
 
@@ -123,9 +166,9 @@ $NF。内建变量 NF 等于划分的域的数目，NR 和 FNR 加 1。大于 $N
 域中存储的数据类型为字符串，除非整个域都是数字格式，此时该域的数据类型为 “数字和字符串”
 例如：
 
-	echo 24 24E |
-	awk '{ print($1>100, $1>"100", $2>100, $2>"100") }'
-	0 1 1 1
+    echo 24 24E |
+    awk '{ print($1>100, $1>"100", $2>100, $2>"100") }'
+    0 1 1 1
 
 在上面的例子中，$0 和 $2 是字符串，$1 是数字和字符串类型。print 语句中，第一个比较是
 数值比较，第二个是字符串比较，第三个是字符串比较（100 会被转化为 "100"），最后一个也是
@@ -134,70 +177,244 @@ $NF。内建变量 NF 等于划分的域的数目，NR 和 FNR 加 1。大于 $N
 域的索引并不是常量。任何 awk 语言中的合法表达式都可以放在 $ 后面来引用一个域。表达式的
 值指定了域的索引。如果表达式的值是字符串，则会被转化为数字。例如：
 
-	awk '{for(i=1;i<=NF;i++) 
-			print $i }'
+    awk '{for(i=1;i<=NF;i++)
+    print $i }'
 
 上面的代码将文件中每一行的每一个域打印在一行上。
 
 ## 表达式和操作符
 
-	assignment          =  +=  -=  *=  /=  %=  ^=
-	conditional         ?  :
-	logical or          ||
-	logical and         &&
-	array membership    in
-	matching       ~   !~
-	relational          <  >   <=  >=  ==  !=
-	concatenation       (no explicit operator)
-	add ops             +  -
-	mul ops             *  /  %
-	unary               +  -
-	logical not         !
-	exponentiation      ^
-	inc and dec         ++ -- (both post and pre)
-	field               $
+AWK 表达式的语法和 c 语言很相似。主要的表达式有：数字常量，字符串常量，变量，域，数组和
+函数调用。变量，数组或者函数的名字，称之为标识符。标识符由字母，数字，下划线组成，但是不能
+以数字打头。使用变量不用声明；变量在它们被首次引用的时候自动创建，并被初始化为 null。
+
+表达式由以下操作符组成，操作符按照优先级地址排列
+
+* 赋值运算符：`=  +=  -=  *=  /=  %=  ^=`
+* 条件运算符：`?  :`
+* 逻辑或：`||`
+* 逻辑与：`&&`
+* 数组关系运算符：`in`
+* 匹配：`~   !~`
+* 关系操作符：`<  >   <=  >=  ==  !=`
+* 连接操作符：(no explicit operator)
+* 加法：`+  -`
+* 乘法：`*  /  %`
+* 一元操作符：`+  -`
+* 逻辑非：`!`
+* 乘方：`^`
+* 前后自增和自减：`++ --`
+* 域引用操作符：`$`
+
+赋值运算符，条件运算符，乘方运算符是从右向左结合。其它的运算符从左到右结合。所有的表达式
+都可以使用括号括起来。
 
 ## 数组
 
+AWK 提供有一维数组。数组元素通过 `array[expr]` 表达。 expr 在内部会被转换成字符串类型。
+例如，A[1] 和 A["1"] 引用同一个数字元素，并且真正的索引是 "1"。由字符串索引的数组被称为
+关联数组。数组最初是空的；数组元素当被访问的时候才会存在。如果数组 array 中存在元素 expr，
+也即元素 array[expr] 存在，那么表达式 `expr in array` 的值为 1，如果不存在，那么这个表
+达式的值为 0。
+
+有一种形式的 for 语句可以遍历数组的每一个索引
+
+    for ( var in array ) statement
+
+以上语句会将 var 设置为 array 的每一个索引，然后执行语句 `statement`。不过要注意，数组
+索引被遍历的顺序是未定义的。
+
+语句 `delete array[expr]`，会删除元素 array[expr]，造成元素 array[expr] 不复存在。
+mawk 支持一个扩展语法：`delete array`，会删除数组 array 的所有的元素。
+
 ## 内建变量
 
-+ ARGC      number of command line arguments.
-+ ARGV      array of command line arguments, 0..ARGC-1.
-+ CONVFMT   format for internal conversion of numbers to string, 
-  initially = "%.6g".
-+ ENVIRON   array indexed by environment variables.  An environment string, 
-  var=value is stored as ENVIRON[var] = value.
-+ FILENAME： 当前正在处理的输入文件的名字
-+ FNR：当前输入文件的当前记录编号（行），该变量跟 NR 变量的区别是，每当读取一个新的文件
+下面的这些变量是内建于 AWK 的，并且在程序执行之前就会被初始化。
+
+* `ARGC`：命令行参数的个数
+* `ARGV`：由命令行参数组成的数组，索引从 0 到 ARGC-1
+* `CONVFMT`：内部将数组转化为字符串的格式字符，默认是 "%.6g"
+* `ENVIRON`：由环境变量组成的关联数组。环境变量 var=value，在该数组中表示为：
+    EVVIRON[var] = value
+* `FILENAME`：当前正在处理的输入文件的名字
+* `FNR`：当前输入文件的当前记录（行）编号，该变量跟 NR 变量的区别是，每当读取一个新的文件
   时，该变量都将被重置。而无论读取多少个输入文件，NR 变量都不会被重置。
-+ FS：域分隔符，默认为：空格，水平制表符，换行符。可被重新制定为一个正则表达式。
-+ NF：一条记录中域的个数，对域的引用如果大于该数字，得到空字符串（""）。
-+ NR：当前的记录索引，从 1 开始。
-+ OFMT      format for printing numbers; initially = "%.6g".
-+ OFS       inserted between fields on output, initially = " ".
-+ ORS       terminates each record on output, initially = "\n".
-+ RLENGTH   length set by the last call to the built-in function, match().
-+ RS：记录分隔符，默认为 "\n"，如果你想要改变该变量，一般在与 BEGIN 配对的 {action}
+* `FS`：域分隔符，默认为：空格，水平制表符，换行符。可被重新指定为一个正则表达式。
+* `NF`：一条记录中域的个数，对域的引用如果大于该数字，得到空字符串（""）。
+* `NR`：当前的记录索引，从 1 开始。
+* `OFMT`：打印数字的格式，默认为 "%.6g"
+* `OFS`：输出域分隔符，默认为 " "
+* `ORS`：输出记录分隔符，默认为 "\n"
+* `RLENGTH`：length set by the last call to the built-in function, match().
+* `RS`：记录分隔符，默认为 "\n"，如果你想要改变该变量，一般在与 BEGIN 配对的 {action}
     中更改，例如：
 
-		awk 'BEGIN { RS = "u"} 
-		 	 { print $0 }' mail-list
+        awk 'BEGIN { RS = "u"}; { print $0 }' mail-list
 
-	记录分隔符也可以是一个正则表达式。
+    记录分隔符也可以是一个正则表达式。
 
-+ RSTART    index set by the last call to match().
-+ SUBSEP    used to build multiple array subscripts, initially = "\034".
+* `RSTART`：index set by the last call to match().
+* `SUBSEP`：used to build multiple array subscripts, initially = "\034".
 
 ## 内建函数
 
+### 字符串函数
+
+* `gsub(r,s,t)  gsub(r,s)`
+
+    全局替换，变量 t 中任何一处匹配正则表达式 r 的地方都将被替换为字符换 s。返回替换的
+    次数。如果省略了 t，使用 $0。
+
+* `index(s,t)`
+
+    如果 t 是 s 的子串，则返回 t 在 s 中开始的位置，否则，返回 0。s 中第一个字符的位置
+    是 1。
+
+* `length(s)`：返回字符串 s 的长度
+* `match(s,r)`
+
+    返回字符串 s 中正则表达式 r 的第一次最长匹配的索引。如果不匹配，返回 0。作为一个副
+    作用，`RSTART` 被设置为该函数的返回值。`RLENGTH` 被设置为匹配的长度，如果没有匹配，
+    设置为 -1。如果匹配了空串，`RLENGTH` 设置为 0。如果匹配在字符串的最前面，返回 1。
+    如果匹配在最后面，返回 `length(s) + 1`
+
+* `split(s,A,r)  split(s,A)`
+
+    字符串 s 按照正则表达式 r 被切割为多个子字符串，将这些子字符串放在数组 A 中。返回
+    子字符串的数目。如果省略了 r，则使用变量 FS。
+
+* `sprintf(format,expr-list)`
+
+    根据格式化字符串 format，由参数 expr-list 构造一个新的字符串，并返回该字符串。该函
+    数类似于 c 语言中标准输入输出库中的 printf 函数。
+
+* `sub(r,s,t)  sub(r,s)`：单次替换，跟 `gsub()` 相同，只不过只替换一次。
+* `substr(s,i,n)  substr(s,i)`
+
+    返回 s 的一个子串，该子串开始于索引 i，长度为 n。如果省略了 n，s 中从索引 i 开始的
+    余下部分都被返回。
+
+* `tolower(s)`：复制 s 一份，并将 s 中的所有大写字母改为小写，返回 s
+* `toupper(s)`：复制 s 一份，并将 s 中的所有小写字母改为大写，返回 s
+
+### 数学函数
+
+* `atan2(y,x)`：反正切函数
+* `cos(x)`：余弦函数，x 是弧度
+* `exp(x)`：乘方函数
+* `int(x)`：去掉 x 的小数部分
+* `log(x)`：以 e 为底的对数
+* `rand()`：返回 0 和 1 之间的一个随机数
+* `sin(x)`：正弦函数，x 是弧度
+* `sqrt(x)`：返回 x 的平方根
+* `srand(expr)  srand()`：
+    为随机数生成器做种，如果省略了 `expr`，则使用当前时钟，并且返回之前的种子。mawk 会
+    在启动的时候自动使用时钟为随机数生成器做种，因此没有使用 `srand()` 函数的必要。
+    `srand()` 在需要重复随机数序列的时候很有用。
+
 ## 输入和输出
+
+有两个输出语句， `print` 和 `printf`。它们的用法如下：
+
+* `print`：打印 $0 ORS 到标准输出
+* `print expr1, expr2, ..., exprn`
+
+    打印 expr1 OFS expr2 OFS ... exprn ORS 到标准输出。数字表达式会根据 OFMT 转换为
+    字符串
+
+* `printf format, expr-list`
+
+    等同于 c 库函数 printf，根据 format 格式化字符串，将 expr-list 打印到标准输出。
+    接受所有的 ANSI C 格式字符：%c, %d, %e, %E, %f, %g, %G, %i, %o, %s, %u, %x, 
+    %X 和 %%，以及转换修饰符 h 和 l。
+
+printf 函数和 print 函数的参数列表可以括在小括号中。
 
 ## 用户定义函数
 
+用户定义函数的语法是：
+
+    function name( args ) { statements }
+
+函数体中可以包含一个返回语句，但是返回语句并不是必须的。
+
+    return opt_expr
+
+函数调用可以是嵌套的或者是递归的。函数参数如果是数组，按引用传递；如果是其他表达式则按值
+传递。额外的函数参数是局部变量，并且被初始化为 null。例如，下面的函数 `csplit(s, A)` 
+将 s 中的每一个字符放到数组 A 中，返回s 的长度：
+
+    function csplit(s, A,     n, i)
+    {
+        n = length(s)
+        for(i = 1; i <= n; i++) A[i] = substr(s, i, 1)
+        return n
+    }
+
+函数定义中，在函数参数和其他的局部变量之间放入额外的空格是一种约定俗成的用法。函数可以在
+定义之前使用。注意，函数名和后面的小括号必须是挨着的，以免造成其它的问题。
+
 ## 分隔字符串，记录和文件
+
+AWK 使用和 split() 函数相同的算法来将字符串切分为数组。
 
 ## 多行记录
 
+由于 mawk 将 RS 解释为一个正则表达式，因此很容易存在多行记录。如果你设置 RS = "\n\n+"，
+记录分隔符就是一个或者多个空行。同时，如果 FS = " "（默认情况下），换行符就是被当做空格，
+从而成为域分隔符。
+
 ## 程序执行流程
 
+该节描述 AWK 程序的执行流程。首先，内置变量 `ARGC` 被设置为传递给程序的命令行参数的个数。
+其中 `ARGC[0]` 是 AWK 解释器的名字，ARGV[1] 到 ARGV[ARGC-1] 保存着余下的命令行参数，
+不过不包括选项和程序源代码。例如：
+
+    mawk -f prog v=1 A t=hello B
+
+经过解析之后：ARGC = 5；ARGV[0] = "mawk"；ARGV[1] = "v=1"；ARGV[2] = “A”；
+ARGV[3] = "t=hello"；ARGV[4] = "B"。
+
+接下来，每一个 `BEGIN` 代码块儿被按照顺序执行。如果程序只包含了 `BEGIN` 代码块儿，则执行 
+完`BEGIN` 块儿之后，程序执行终止。否则，会打开一个输入流，继续往下执行。如果 ARGC 等于 1，
+输入流被设置为标准输入，否则会检查命令行参数 ARGV[1] ...  ARGV[ARGC-1] 去寻找文件参数。
+
+命令行参数分为 3 种：文件参数，赋值参数和空参数 ""。赋值参数具有这种格式：`var=string`。
+如果 ARGV[i] 是一个文件参数，且该文件是空，则被跳过；如果是一个赋值参数，则赋值生效。
+
+一旦打开了一个输入流，每一个输入的记录都会和每一个 `pattern` 进行匹配，如果匹配成功，相应
+的 `{action}` 就被执行。如果你的 expression 值为真，那么该 pattern 就被匹配。`BEGIN`
+pattern 在任何输入被读入之前就匹配。`END` 在所有输入都被读入之后才会被匹配。对于 pattern
+`expr1,expr2`，matches every record between the match of  expr1  and  the  match  
+expr2 inclusively.
+
+如果一个文件处理完，则会检查命令行看是否还有其它的文件，如果有，则继续读取其它文件中的记录。
+如果没有，则 `END` pattern 会被匹配，相应的语句被执行。
+
+在上面的例子中，赋值 `v=1` 在 `BEGIN` 序列被执行完之后发生，v 中的值类型为字符串和数字。
+然后会从文件 A 中读取输入。文件 A 读取完之后，会设置 t=hello，然后读取 B 中的内容。当 B
+中的内容处理完毕之后， `END` 序列被执行。
+
+程序流可以被下面的语句改变
+
+    next
+    exit  opt_expr
+
+`next` 会导致结束处理当前的记录，并立即读取下一条记录。类似于 c 语言中的 `continue` 
+语句。 `exit` 语句会导致立即执行 `END` 序列。如果没有 `END` 序列，则程序立即终止。 可选
+的 `opt_expr` 会设置程序的退出码。
+
+
 ## 例子
+
+1. 模拟 cat 命令
+
+        { print }
+
+2. 模拟 wc 命令
+
+        { chars += length($0) + 1
+          words += NF }
+        END {print NR, words, chars}
+
+3. 
