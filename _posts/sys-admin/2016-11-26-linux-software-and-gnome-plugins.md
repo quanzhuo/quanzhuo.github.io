@@ -9,15 +9,11 @@ tags:
 {:toc}
 
 虽然很多软件开发商不对 Linux 平台提供支持，但是开源世界的大神们总有自己的解决方案，而且很多用
-起来还不错。 Gnome 桌面的默认安装给人一种粗枝大叶的感觉，看起来不够细腻，但是 Gnome Shell 
-提供了很多强大的插件，稍加定制即可满足需求。 我个人更加喜欢 Gnome 桌面，下面将介绍一些 Linux 
-上的一些提高生产力的软件以及 Gnome Shell 插件。
+起来还不错。 Gnome 桌面的默认安装给人一种粗枝大叶的感觉，看起来不够细腻，但是 Gnome Shell
+提供了很多强大的插件，稍加定制即可满足需求。 我个人更加喜欢 Gnome 桌面，下面将介绍一些 Linux
+上的一些提高生产力的软件，Gnome Shell 扩展以及一些常用的 PPA 源。
 
 
-
-介绍软件以及扩展之前，先上一张我的桌面的图片吧。 
-
-![](/asserts/images/linux/desktop.png).
 
 软件
 ---
@@ -171,3 +167,22 @@ Gnome Shell 扩展
 + Openweather
 
     天气预报插件。
+
+PPA
+---
+PPA 是 Personal Package Archives 首字母简写。通过 PPA 安装软件不仅更方便，而且可以自动更
+新。下面介绍一下较常用的 ppa 源。
+
++ Oracle Java (JDK) 7 / 8 / 9 Installer PPA
+
+    该 PPA 源中包含 Oracle 官方发布的 JDK。不过目前的 JDK 9 还是 early release，所以一般
+    用户仍然应该使用 JDK 7,8。通过下面的指令添加该 PPA：
+
+        sudo add-apt-repository ppa:webupd8team/java
+        sudo apt-get update
+        sudo apt-get install oracle-java8-installer / oracle-java7-installer
+
+    该 PPA 的官方站点在
+    [这里](https://launchpad.net/~webupd8team/+archive/ubuntu/java)。
+    这个仓库里面还提供了切换 JDK 版本的命令：
+    oracle-java7-set-default 和 oracle-java8-set-default。
