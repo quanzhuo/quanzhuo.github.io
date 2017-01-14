@@ -186,3 +186,18 @@ PPA 是 Personal Package Archives 首字母简写。通过 PPA 安装软件不�
     [这里](https://launchpad.net/~webupd8team/+archive/ubuntu/java)。
     这个仓库里面还提供了切换 JDK 版本的命令：
     oracle-java7-set-default 和 oracle-java8-set-default。
+
+主题
+---
+Gnome Shell 具有很大的可定制性，通过安装一些主题，可以使你的桌面更加养眼。
+
++ Arc Theme
++ Flatabulous
++ Arc-Flatabulous Theme
+
+    以上是三款扁平化的 Gnome Shell 主题，Arc-Flatabulous Theme 与 Arc Theme 相比具有更
+    加漂亮的窗口按钮。从名字即可看出 Arc-Flatabulous 是 Arc 和 Flatabulous 的结合。这三款
+    主题都托管于 GitHub：
+    [Arc Theme](https://github.com/horst3180/arc-theme)，
+    [Flatabulous](https://github.com/anmoljagetia/Flatabulous)，
+    [Arc-Flatabulous Theme](https://github.com/andreisergiu98/arc-flatabulous-theme)。
