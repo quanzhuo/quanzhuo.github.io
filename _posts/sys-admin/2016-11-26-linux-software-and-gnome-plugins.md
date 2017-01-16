@@ -125,6 +125,14 @@ tags:
     好用的音乐播放器：单曲循环，快捷键，暗黑主题，拖拽支持... 等等。
     [该项目](https://github.com/fossfreedom/alternative-toolbar) 托管于 Github。
 
++ ReText
+
+    简洁但是功能强大的 Markdown 编辑器，该项目托管于
+    [GitHub](https://github.com/retext-project/retext)，Ubuntu 中可以直接通过包管理
+    器安装：
+
+        sudo apt install retext
+
 Gnome Shell 扩展
 ---
 下面介绍一些 Gnome Shell 的扩展，这只是一些方便我使用的一些扩展。Gnome Shell 有多达数百个
