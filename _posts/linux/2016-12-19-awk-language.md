@@ -409,12 +409,16 @@ expr2 inclusively.
 
 1. 模拟 cat 命令
 
-        { print }
+    ```bash
+    { print }
+    ```
 
 2. 模拟 wc 命令
 
-        { chars += length($0) + 1
-          words += NF }
-        END {print NR, words, chars}
+    ```bash
+    { chars += length($0) + 1
+      words += NF }
+      END {print NR, words, chars}
+    ```
 
 3. 
