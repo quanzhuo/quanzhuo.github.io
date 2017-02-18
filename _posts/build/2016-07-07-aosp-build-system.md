@@ -48,6 +48,12 @@ Google 一直致力于加快编译速度，为使增量开发更加便捷，对 
 + sepgrep：sepolicy 文件
 + sgrep：所有的 source 
 + godir：
++ core:
++ cproj
++ grepprebuilt
++ pid
++ systemstack
+
 
 导入 `build/envsetup.sh` 之后，输入 `hmm` 即可看到导入的所有的函数。
 
