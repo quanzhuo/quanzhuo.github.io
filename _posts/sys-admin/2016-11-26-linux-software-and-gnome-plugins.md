@@ -209,3 +209,8 @@ Gnome Shell 具有很大的可定制性，通过安装一些主题，可以使�
     [Arc Theme](https://github.com/horst3180/arc-theme)，
     [Flatabulous](https://github.com/anmoljagetia/Flatabulous)，
     [Arc-Flatabulous Theme](https://github.com/andreisergiu98/arc-flatabulous-theme)。
+
++ OSX-Arc-Collection
+
+    一款非常漂亮的扁平化主题。它是从 Arc theme 优化而来的，字体也很漂亮，重绘了很多图标。扁平
+    化的效果更加明显。该项目托管于 [github](https://github.com/LinxGem33/OSX-Arc-Darker)。
