@@ -133,6 +133,11 @@ tags:
 
         sudo apt install retext
 
++ Nylas Mail
+
+    漂亮、简洁的邮件客户端，基于 Web 技术构建，响应速度较快，收信及时，值得尝试。可以在
+    [这里](https://www.nylas.com/download)下载安装。
+
 Gnome Shell 扩展
 ---
 下面介绍一些 Gnome Shell 的扩展，这只是一些方便我使用的一些扩展。Gnome Shell 有多达数百个
