@@ -50,10 +50,22 @@ VSCode 的 Tokenization 采用了 [TextMate](https://macromates.com/manual/en/la
 
 这段的意思就是说对于类型为 `keyword.control` 的符号，我们将其前景色设置为 `#569cd6`。
 
-VSCode 通过分词（Tokenization）得到了每一个词语的类型，然后从主题文件中找到该类型的词语应该被赋予什么颜色。这就是语法高亮最基本的原理。 了解了语法高亮的基本原理，那么下面我们将从以下几个方面来看 VSCode 是如何在源码中实现这些步骤的。
+VSCode 通过分词（Tokenization）得到了每一个词语的类型，然后从主题文件中找到该类型的词语应该被赋予什么颜色。这就是语法高亮最基本的原理。了解了语法高亮的基本原理，那么下面我们将从以下几个方面来看 VSCode 是如何在源码中实现这些步骤的。
 
 1. TextMate 语法文件 xx.tmLanguage.json 何时被加载？
 2. 分词是怎么进行的？
 3. 主题文件 `dark_vs.json` 是何时读取的？
 4. 词语的类型与主题中的 scope 是怎么匹配的？
 5. 颜色是怎么设置，怎么渲染出来的？
+
+## TextMate 语法文件的读取
+
+我们以c语言语法高亮文件`extensions/cpp/syntaxes/c.tmLanguage.json`为例来分析。TextMate 语法文件的读取由 npm库 `vscode-textmate` 实现。该库支持加载 JSON 或者 PLIST 格式的 textmate 语法文件。
+
+
+
+## 分词是怎么进行的？
+
+vscode 的分词是通过调用
+
+分词后所有的 token 都存储在一个 `ContiguousTokensStore` 中，该类位于文件 `vs/editor/common/tokens/contiguousTokensStore.ts` 文件中。
