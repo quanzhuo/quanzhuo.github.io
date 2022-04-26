@@ -60,7 +60,13 @@ VSCode 通过分词（Tokenization）得到了每一个词语的类型，然后�
 
 ## TextMate 语法文件的读取
 
-我们以c语言语法高亮文件`extensions/cpp/syntaxes/c.tmLanguage.json`为例来分析。TextMate 语法文件的读取由 npm库 `vscode-textmate` 实现。该库支持加载 JSON 或者 PLIST 格式的 textmate 语法文件。
+我们以c语言语法高亮文件`extensions/cpp/syntaxes/c.tmLanguage.json`为例来分析。TextMate 语法文件的读取由 npm 库 `vscode-textmate` 实现。该库支持加载 JSON 或者 PLIST 格式的 textmate 语法文件。该库有以下几个比较重要的接口：
+
++ `Registry`: 是一个用于保存所有语法的注册表
++ `IGrammar`: 这是一个接口，有两个很重要的方法：`tokenizeLine`，和 `tokenizeLine2`，均用于给一行文本分词（tokenization），返回结果包含：语言，符号类型，字体风格，前景色，背景色。区别是一个返回的格式是文本格式，另一个返回的是二进制格式。
++ `ITokenizeLineResult`: `tokenizeLine` 的返回值类型
++ `ITokenizeLineResult2`：`tokenizeLine2` 的返回值类型
++ `parseRawGrammar`: 用于解析 textmate 语法文件，json 格式或者 plist 格式
 
 
 
