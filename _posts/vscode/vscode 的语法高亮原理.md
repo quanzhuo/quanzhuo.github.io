@@ -68,7 +68,11 @@ VSCode 通过分词（Tokenization）得到了每一个词语的类型，然后�
 + `ITokenizeLineResult2`：`tokenizeLine2` 的返回值类型
 + `parseRawGrammar`: 用于解析 textmate 语法文件，json 格式或者 plist 格式
 
+首先在 `workbench/services/extensions/electron-browser/extensionService.ts` 中的 `_startLocalExtensionHost` 中调用了 `this._doHandleExtensionPoints(this._registry.getAllExtensionDescriptions());`,
 
+### TMGrammarFactory 的创建
+
+在 `abstractTextMateService.ts` 的 `_createFactory(languageId)` 方法中，调用了 `this._getOrCreateGrammarFactory()`。
 
 ## 分词是怎么进行的？
 
